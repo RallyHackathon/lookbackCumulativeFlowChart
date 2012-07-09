@@ -112,8 +112,8 @@ Ext.define('LookbackCumulativeFlowChartApp', {
             cls:'cumulative-flow-chart',
             storeConfig:storeConfig,
             cumulativeFlowConfig:{
-                startDate:this._getStartDate(),
-                endDate:this._getEndDate(),
+                startDate:this.down('#startDate').getValue(),
+                endDate:this.down('#endDate').getValue(),
                 timeZone:this.getContext().getUser().UserProfile.TimeZone ||
                     this.getContext().getWorkspace().WorkspaceConfiguration.TimeZone,
                 aggregationType:'Story Count'
@@ -124,13 +124,5 @@ Ext.define('LookbackCumulativeFlowChartApp', {
                 }
             }
         });
-    },
-
-    _getStartDate:function () {
-        return this.down('#startDate').getValue();
-    },
-
-    _getEndDate:function () {
-        return this.down('#endDate').getValue();
     }
 });
