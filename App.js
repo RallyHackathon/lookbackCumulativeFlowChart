@@ -62,6 +62,9 @@ Ext.define('LookbackCumulativeFlowChartApp', {
         this.add({
             xtype:'rallychooserdialog',
             artifactTypes:['portfolioitem'],
+            storeConfig: {
+                fetch: ['PortfolioItemType']
+            },
             title:'Choose Portfolio Item',
             autoShow:true,
             listeners:{
@@ -116,11 +119,11 @@ Ext.define('LookbackCumulativeFlowChartApp', {
                 endDate:this.down('#endDate').getValue(),
                 timeZone:this.getContext().getUser().UserProfile.TimeZone ||
                     this.getContext().getWorkspace().WorkspaceConfiguration.TimeZone,
-                aggregationType:'Story Count'
+                aggregationType:'count'
             },
             chartConfig:{
                 title:{
-                    text:portfolioItem.FormattedID + ': ' + portfolioItem.Name
+                    text:portfolioItem.PortfolioItemType.Name + ' ' + portfolioItem.FormattedID + ': ' + portfolioItem.Name
                 }
             }
         });
